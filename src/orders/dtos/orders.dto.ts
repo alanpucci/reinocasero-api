@@ -1,15 +1,18 @@
 import { Type } from "class-transformer";
-import { IsArray, IsDate, IsDateString, IsNumber, IsString, ValidateNested } from "class-validator";
-import { MenuItem } from "../models/menuItem.model";
+import { IsArray, IsDateString, IsString, ValidateNested } from "class-validator";
+import { CreateMenuDto } from '../../menues/dtos/menu.dto';
 
 export class CreateOrderDto{
     @IsString()
     client:string;
+    
     @IsDateString()
     deliveryDate:Date;
+
     @IsArray()
     @ValidateNested({each:true})
-    @Type(()=>MenuItem)
-    menuItems: MenuItem[];
+    @Type(()=>CreateMenuDto)
+    menuItems: CreateMenuDto[];
+
     description?:string;
 }

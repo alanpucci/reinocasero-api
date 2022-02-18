@@ -12,7 +12,16 @@ export class OrdersController {
         return {
             msg:"Orden creada exitosamente",
             status:200,
-            extra: createdOrder
+            data:createdOrder
+        }
+    }
+
+    @Get()
+    async listOrders():Promise<{}>{
+        const orders = await this.ordersService.getAll();
+        return {
+            total:orders.length,
+            orders
         }
     }
 }

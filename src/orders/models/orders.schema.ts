@@ -1,6 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
-import { MenuItem } from '../models/menuItem.model';
+import { CreateMenuDto } from '../../menues/dtos/menu.dto';
 
 export type OrderDocument = Order & Document;
 
@@ -16,7 +16,7 @@ export class Order {
   deliveryDate: Date;
 
   @Prop()
-  menuItems: MenuItem[];
+  menuItems: CreateMenuDto[];
 
   @Prop()
   totalPrice: number;
